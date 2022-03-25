@@ -58,7 +58,7 @@ class AboutMe extends StatelessWidget {
 
   String summary =
   '''
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  hi
   ''';
 
   @override
@@ -75,8 +75,8 @@ class AboutMe extends StatelessWidget {
           )
         ),
         Expanded(
-          child: Container(
-            padding: const EdgeInsets.fromLTRB(24, 4, 24, 4),
+          child: FractionallySizedBox (
+            widthFactor: 0.5,
             child: Text(
               summary,
               style: const TextStyle(color: Colors.white,),
@@ -96,91 +96,84 @@ class Skills extends StatelessWidget {
   final double _cellPadding = 24;
   final double _cellRadius = 24;
 
+  Widget getContentPanel(Widget content) {
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.all(_cellPadding),
+        child: AspectRatio (
+          aspectRatio: 4/3, 
+          child: Container(
+            decoration: BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(24)), border: Border.all(color: Colors.white)),
+            child: content,
+          )
+        )
+      ),
+    );
+  }
+  
   @override
   Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if(constraints.maxWidth / constraints.maxHeight > 1) {
+          return _buildWideGallery();
+        } else {
+          return _buildTallGallery();
+        }
+      }
+    );
+  }
+  
+  Widget _buildWideGallery(){
     return Column (
       children: [
         Expanded(
           child: Row(
             children : [
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(_cellPadding),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(_cellRadius),
-                      color: Colors.red,
-                    ),
-                  )
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(_cellPadding),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(_cellRadius),
-                      color: Colors.blue,
-                    ),
-                  )
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(_cellPadding),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(_cellRadius),
-                      color: Colors.yellow,
-                    ),
-                  )
-                ),
-              )
+              getContentPanel(const Placeholder()), // Programming languages
+              getContentPanel(const Placeholder()), // Linux
+              getContentPanel(const Placeholder()), // Flutter
             ]
           ),
         ),
         Expanded (
           child: Row(
             children : [
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(_cellPadding),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(_cellRadius),
-                      color: Colors.orange,
-                    ),
-                  )
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(_cellPadding),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(_cellRadius),
-                      color: Colors.purple,
-                    ),
-                  )
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(_cellPadding),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(_cellRadius),
-                      color: Colors.green,
-                    ),
-                  )
-                ),
-              )
+              getContentPanel(const Placeholder()), // Docker
+              getContentPanel(const Placeholder()), // Unity3D
+              getContentPanel(const Placeholder()), // NeoVim
             ]
           ),
         ),
       ],
     );
   }
+
+  Widget _buildTallGallery(){
+    return Row (
+      children: [
+        Expanded(
+          child: Column(
+            children : [
+              getContentPanel(const Placeholder()), // Programming languages
+              getContentPanel(const Placeholder()), // Linux
+              getContentPanel(const Placeholder()), // Flutter
+            ]
+          ),
+        ),
+        Expanded (
+          child: Column(
+            children : [
+              getContentPanel(const Placeholder()), // Docker
+              getContentPanel(const Placeholder()), // Unity3D
+              getContentPanel(const Placeholder()), // NeoVim
+            ]
+          ),
+        ),
+      ],
+    );
+  }
+
 }
 
 class Experience extends StatelessWidget {
