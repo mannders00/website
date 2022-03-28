@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_website/theme.dart';
-import 'package:personal_website/widgets/Home.dart';
+import 'package:personal_website/widgets/home.dart';
 
 void main() => runApp(const WebApp());
 
@@ -9,8 +8,23 @@ class WebApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context){
+    
+    const backgroundColor = Colors.black;//Color(0xff181a1f);
+    final theme = ThemeData(
+      canvasColor: backgroundColor,
+      appBarTheme: const AppBarTheme(
+        color: Colors.transparent,
+        shadowColor: Colors.transparent 
+      ),
+      primarySwatch: Colors.grey,
+      textTheme: Theme.of(context).textTheme.apply(
+        fontFamily: 'Inconsolata',
+        bodyColor: Colors.white
+      ),
+    );
+
     return MaterialApp(
-      theme: WebTheme.theme,
+      theme: theme,
       home: Home(), 
     );
   }
