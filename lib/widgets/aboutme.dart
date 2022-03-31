@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 class AboutMe extends StatelessWidget {
-  AboutMe({ Key? key }) : super(key: key);
+  const AboutMe({ Key? key }) : super(key: key);
   
-  var description =
+  final description =
   '''
   Hello! Welcome to my landing page.
   
@@ -26,8 +26,8 @@ class AboutMe extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(8.0),
             child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              child: Image.asset('profile.jpg'),
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+              child: Image.asset('assets/profile.png'),
             )
           )
         ),
@@ -43,6 +43,7 @@ class AboutMe extends StatelessWidget {
                 child: AutoSizeText(
                   description,
                   textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 32),
                   minFontSize: 8,
                 )
               ),

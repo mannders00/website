@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 class Front extends StatelessWidget {
   const Front({ Key? key }) : super(key: key);
+  
+  final double subSize = 32; 
    
   @override
   Widget build(BuildContext context) {
@@ -14,15 +16,15 @@ class Front extends StatelessWidget {
             widthFactor: 0.8,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: RichText(
-                text: TextSpan(
+              child: SelectableText.rich(
+                TextSpan(
                   style: DefaultTextStyle.of(context).style,
-                  children: const <TextSpan>[
-                    TextSpan(text: "Matthew Anderson\n", style: TextStyle(fontSize: 48,)),
-                    TextSpan(text: 'Software Engineer Portfolio\n\n'),
-                    TextSpan(text: 'matta9001@gmail.com\n'),
-                    TextSpan(text: 'github.com/matta9001\n'),
-                    TextSpan(text: 'linkedin.com/in/matthew-j-anderson'),
+                  children: <TextSpan>[
+                    TextSpan(text: "Matthew Anderson\n", style: TextStyle(fontSize: 64,)),
+                    TextSpan(text: 'Software Engineer Portfolio\n\n', style: TextStyle(fontSize: subSize,)),
+                    TextSpan(text: 'matta9001@gmail.com\n', style: TextStyle(fontSize: subSize  ,)),
+                    TextSpan(text: 'github.com/matta9001\n', style: TextStyle(fontSize: subSize ,)),
+                    TextSpan(text: 'linkedin.com/in/matthew-j-anderson', style: TextStyle(fontSize: subSize,)),
                   ]
                 ),
               ),

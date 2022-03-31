@@ -10,6 +10,7 @@ class Home extends StatelessWidget {
   Home({ Key? key }) : super(key: key);
   
   final ScrollController controller = ScrollController();
+  final double titleFontSize = 32;
 
   @override
   Widget build(BuildContext context) {
@@ -21,34 +22,20 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            TextButton(onPressed: () => {html.window.open('https://github.com/matta9001/', 'GitHub')}, child: Text('', style: TextStyle(fontSize: 36, color: Colors.blue),),),
-            TextButton(onPressed: () => {html.window.open('https://www.linkedin.com/in/matthew-j-anderson/', 'LinkedIn')}, child: Text('', style: TextStyle(fontSize: 36, color: Colors.blue),),),
-            TextButton(onPressed: () => {html.window.open('mailto:matta9001@gmail.com', 'email')}, child: Text('', style: TextStyle(fontSize: 36, color: Colors.blue),),),
+            Flexible(child: TextButton(onPressed: () => { jumpTo(_height, 0) }, child: FittedBox(child: Text('Home', style: TextStyle(fontSize: titleFontSize),)),)),
+            Flexible(child: TextButton(onPressed: () => { jumpTo(_height, 1) }, child: FittedBox(child: Text('About Me', style: TextStyle(fontSize: titleFontSize),)),)),
+            Flexible(child: TextButton(onPressed: () => { jumpTo(_height, 2) }, child: FittedBox(child: Text('Skills', style: TextStyle(fontSize: titleFontSize),)),)),
+            Flexible(child: TextButton(onPressed: () => { jumpTo(_height, 3) }, child: FittedBox(child: Text('Experience', style: TextStyle(fontSize: titleFontSize),)),)),
+            Flexible(child: TextButton(onPressed: () => {html.window.open('https://github.com/matta9001/', 'GitHub')}, child: Text('', style: TextStyle(fontSize: titleFontSize, color: Colors.blue),),)),
+            Flexible(child: TextButton(onPressed: () => {html.window.open('https://www.linkedin.com/in/matthew-j-anderson/', 'LinkedIn')}, child: Text('', style: TextStyle(fontSize: titleFontSize, color: Colors.blue),),)),
+            Flexible(child: TextButton(onPressed: () => {html.window.open('mailto:matta9001@gmail.com', 'email')}, child: Text('', style: TextStyle(fontSize: titleFontSize, color: Colors.blue),),)),
           ],
         ),
-        actions: <Widget>[
-          TextButton (
-            onPressed: () => { jumpTo(_height, 0) },
-            child: const Text('Home')
-          ),
-          TextButton (
-            onPressed: () => { jumpTo(_height, 1) },
-            child: const Text('About Me')
-          ),
-          TextButton (
-            onPressed: () => { jumpTo(_height, 2) },
-            child: const Text('Skills')
-          ),
-          TextButton (
-            onPressed: () => { jumpTo(_height, 3) },
-            child: const Text('Experience')
-          ),
-        ],
       ),
       body: ListView(
         children: <Widget>[
           generatePane(_width, _height, const Front()),
-          generatePane(_width, _height, AboutMe()),
+          generatePane(_width, _height, const AboutMe()),
           generatePane(_width, _height, Skills()),
           generatePane(_width, _height, Experience()),
         ],

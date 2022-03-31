@@ -19,7 +19,7 @@ class WebApp extends StatelessWidget {
       primarySwatch: Colors.grey,
       textTheme: Theme.of(context).textTheme.apply(
         fontFamily: 'Inconsolata',
-        bodyColor: Colors.white
+        bodyColor: Colors.white,
       ),
     );
 
